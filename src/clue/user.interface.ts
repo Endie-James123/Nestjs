@@ -6,7 +6,7 @@ export class UserDetails {
   @IsInt()
   id: number;
 
-  @IsNotEmpty()
+  @IsNotEmpty({message:"Username must not be empty"})
   username: string;
 
   @IsNotEmpty()
