@@ -10,6 +10,9 @@ export class UserEntity {
   @Column()
   email: string;
 
+  @Column()
+  password: string;
+
   @Column({ default: true })
   isRobot: boolean;
 }
