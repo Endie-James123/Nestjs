@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post, Delete, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete, Patch, Put } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ProductDto } from 'src/dto/product.dto';
 import { productEntity } from 'src/entity/product.entity';
+import { identity } from 'rxjs';
 
 @Controller('product')
 export class ProductController {
@@ -14,11 +15,12 @@ export class ProductController {
     return await this.prodservice.addProduct(payload);
   }
 
-   // Delete product by id
-  //  @Delete('delete/:name')
-  //  async deleteProductByName(@Param('name') name: string): Promise<void> {
-  //    await this.prodservice.deleteProductByName(name);
-  //  }
+  //update Product route (sir fred's method)
+  @Put(':id')
+  async updateProductByid(@Param('id')id, @Body()Payload){
+    return await this.prodservice.updateProduct(id,Payload);
+  }
+
    @Delete('deleteProduct/:name')
   async deleteProductByName(@Param('name') name: string): Promise<void> {
     await this.prodservice.deleteProductByName(name);

@@ -43,12 +43,8 @@ export class ProductService {
     }
     return find;
   }
-  // async deleteProductByName(name: string): Promise<void> {
-  //   const result = await this.productRepository.delete(name);
-  //   if (result.affected === 0) {
-  //     throw new HttpException('Sorry, no such product found',404);
-  //   }
-  // }
+
+  //Delete a product by name
   async deleteProductByName(name: string): Promise<void> {
     const result = await this.productRepository.delete({ name });
     if (result.affected === 0) {
@@ -71,5 +67,16 @@ export class ProductService {
     Object.assign(product, payload);
     return this.productRepository.save(product);
   }
-
+  async updateProduct(id, payload){
+    const update = this.productRepository.findOne({where: {id}})
+    if(!update){
+      throw new HttpException('Product not found',404)
+    }
+    const updatedProduct = await this.productRepository.update(id, payload)
+    return{
+      statusCode: 201,
+      message: 'Product updated successfully',
+      data: updatedProduct
+    }
+  }
 }
