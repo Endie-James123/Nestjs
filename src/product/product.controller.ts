@@ -21,6 +21,14 @@ export class ProductController {
     return await this.prodservice.updateProduct(id,Payload);
   }
 
+  //Delete by id (Sir Fred's Method)
+  @Delete(':id')
+  async deleteProductById(@Param('id')id:number){
+  return await this.prodservice.deleteById(id)
+  }
+
+
+
    @Delete('deleteProduct/:name')
   async deleteProductByName(@Param('name') name: string): Promise<void> {
     await this.prodservice.deleteProductByName(name);

@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { productEntity } from 'src/entity/product.entity';
-import { UserEntity } from 'src/entity/user.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql', //This is your type of database
+      type: 'mysql', //Specifies we are connecting to a MySQL database
       host: 'localhost',
-      port: 3306, //This is the port MySQL is listening to
+      port: 3306, //Port 3306 is the default port for MySQL
       username: 'root',
       password: '', //If your database has a password, this is where you'll input it
       database: 'firstdatabase', //name of the database you created goes here
