@@ -1,6 +1,5 @@
 import { Get, HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from '../entity/user.entity';
 import { Repository } from 'typeorm';
 import { productEntity } from '../entity/product.entity';
 
@@ -40,8 +39,8 @@ export class ProductService {
       throw new HttpException('Sorry, no such product found', 404); //And it'll be a 404 error, meaning not found
     }
     return find;
-  }
-
+  }   
+ 
   //Delete by id (Sir Fred's method)
   async deleteById(id: number) {
     const find = await this.productRepository.findOne({ where: { id } });

@@ -2,7 +2,6 @@ import { Body, Controller, Get, Param, Post, Delete, Patch, Put } from '@nestjs/
 import { ProductService } from './product.service';
 import { ProductDto } from 'src/dto/product.dto';
 import { productEntity } from 'src/entity/product.entity';
-import { identity } from 'rxjs';
 
 @Controller('product')
 export class ProductController {
@@ -26,9 +25,7 @@ export class ProductController {
   async deleteProductById(@Param('id')id:number){
   return await this.prodservice.deleteById(id)
   }
-
-
-
+  
    @Delete('deleteProduct/:name')
   async deleteProductByName(@Param('name') name: string): Promise<void> {
     await this.prodservice.deleteProductByName(name);
