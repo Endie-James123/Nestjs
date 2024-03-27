@@ -25,8 +25,8 @@ export class ProductService {
     //error handling
     if (!find) {
       //this is the error to throw if no such product name is not found in the database
-      throw new HttpException('Sorry, no such product found', 404); //And it'll be a 404 error, meaning not found
-    }
+      throw new HttpException('Sorry, no such product found', 404); //And it'll be a 404 error, meaning "not found"
+    }//else 
     return find;
   }
 
